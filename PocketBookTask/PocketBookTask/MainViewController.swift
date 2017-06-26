@@ -39,6 +39,16 @@ class MainViewController: UIViewController {
   }
   
   override func updateViewConstraints() {
+    makeConstraints()
+    super.updateViewConstraints()
+  }
+}
+
+// MARK: - update constraints
+
+extension MainViewController {
+  
+  fileprivate func makeConstraints() {
     nameLabel.snp.makeConstraints { (maker) in
       maker.center.equalToSuperview()
     }
@@ -60,9 +70,10 @@ class MainViewController: UIViewController {
       maker.bottom.equalTo(self.view.snp.bottom).offset(-50)
       maker.height.equalTo(50)
     }
-    super.updateViewConstraints()
   }
 }
+
+// MARK: - Rotating UIView
 
 extension UIView {
   
