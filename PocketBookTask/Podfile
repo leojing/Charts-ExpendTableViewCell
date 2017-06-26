@@ -1,0 +1,17 @@
+
+platform :ios, '9.2'
+use_frameworks!
+
+
+target 'PocketBookTask' do
+
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'AFNetworking'
+  pod 'Charts'
+  pod 'SnapKit'
+  
+end
+
