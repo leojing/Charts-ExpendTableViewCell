@@ -33,19 +33,20 @@ class StockDetailViewController: UIViewController {
   
   override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
-    
-    currentPriceLabel.snp.updateConstraints { (maker) in
-      let topOffset = UIDevice.current.orientation.isPortrait ? 40 : 15
-      maker.topMargin.equalTo(self.topLayoutGuide.snp.bottom).offset(topOffset)
-    }
-
-    chartView.snp.updateConstraints { (maker) in
-      let width = UIDevice.current.orientation.isPortrait ? self.view.frame.width * 0.8 : 200
-      maker.width.equalTo(width)
-    }
+    updateConstraints()
   }
   
   override func updateViewConstraints() {
+    makeConstraints()
+    super.updateViewConstraints()
+  }
+}
+
+// MARK: - update constraints
+
+extension StockDetailViewController {
+  
+  fileprivate func makeConstraints() {
     let labelWidth = 120
     currentPriceLabel.snp.makeConstraints { (maker) in
       maker.height.equalTo(50)
@@ -76,8 +77,18 @@ class StockDetailViewController: UIViewController {
       maker.leadingMargin.equalTo(self.view.snp.leadingMargin)
       maker.trailingMargin.equalTo(self.view.snp.trailingMargin)
     }
-
-    super.updateViewConstraints()
+  }
+  
+  fileprivate func updateConstraints() {
+    currentPriceLabel.snp.updateConstraints { (maker) in
+      let topOffset = UIDevice.current.orientation.isPortrait ? 40 : 15
+      maker.topMargin.equalTo(self.topLayoutGuide.snp.bottom).offset(topOffset)
+    }
+    
+    chartView.snp.updateConstraints { (maker) in
+      let width = UIDevice.current.orientation.isPortrait ? self.view.frame.width * 0.8 : 200
+      maker.width.equalTo(width)
+    }
   }
 }
 

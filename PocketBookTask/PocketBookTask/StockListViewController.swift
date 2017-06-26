@@ -33,13 +33,7 @@ class StockListViewController: UIViewController {
   }
   
   override func updateViewConstraints() {
-    tableView.snp.makeConstraints { (maker) in
-      maker.topMargin.equalTo(self.view.snp.topMargin).offset(10)
-      maker.bottom.equalTo(self.view.snp.bottom)
-      maker.leadingMargin.equalTo(self.view.snp.leadingMargin)
-      maker.trailingMargin.equalTo(self.view.snp.trailingMargin)
-    }
-    
+     makeConstraints()
      super.updateViewConstraints()
   }
   
@@ -47,6 +41,20 @@ class StockListViewController: UIViewController {
     if segue.identifier == Constants.Segue.showDetailSegue {
       let controller = segue.destination as! StockDetailViewController
       controller.stockDetail = sender as? StockDetail
+    }
+  }
+}
+
+// MARK: - update constraints
+
+extension StockListViewController {
+  
+  fileprivate func makeConstraints() {
+    tableView.snp.makeConstraints { (maker) in
+      maker.topMargin.equalTo(self.view.snp.topMargin).offset(10)
+      maker.bottom.equalTo(self.view.snp.bottom)
+      maker.leadingMargin.equalTo(self.view.snp.leadingMargin)
+      maker.trailingMargin.equalTo(self.view.snp.trailingMargin)
     }
   }
 }
